@@ -1,0 +1,2 @@
+# NEXORA
+App placas
