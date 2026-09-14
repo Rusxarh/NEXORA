@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "NEXORA Connector - RGM v0.1",
+  "version": "0.1.0",
+  "description": "Prototipo aislado: consulta el RGM por placa y extrae datos del DOM. No conectado todavia a NEXORA API.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "https://www.garantiasmobiliarias.com.co/*",
+    "https://consultaprocesos.ramajudicial.gov.co/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.garantiasmobiliarias.com.co/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://consultaprocesos.ramajudicial.gov.co/*"],
+      "js": ["judicial.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
